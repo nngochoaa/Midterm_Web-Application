@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Navbar from 'src/Components/Navbar';
+import Footer from 'src/Components/Footer';
+import Home from 'src/Pages/Home';
+import Shop from 'src/Pages/Shop';
+import LiveStream from 'src/Pages/LiveStream';
+import ProductDetail from 'src/Pages/ProductDetail';
+import Benchmark from 'src/Pages/Benchmark';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <main style={{ minHeight: 'calc(100vh - 60px)' }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Shop" element={<Shop />} />
+          <Route path="/Live/:id" element={<LiveStream />} />
+          <Route path="/Product/:id" element={<ProductDetail />} />
+          <Route path="/Benchmark" element={<Benchmark />} />
+        </Routes>
+      </main>
+      <Footer />
+    </BrowserRouter>
   );
 }
-
-export default App;
